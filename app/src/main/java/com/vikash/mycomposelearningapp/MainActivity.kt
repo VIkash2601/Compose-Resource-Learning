@@ -3,14 +3,19 @@ package com.vikash.mycomposelearningapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.vikash.mycomposelearningapp.ui.theme.MyComposeLearningAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,11 +37,24 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
+    Column(
         modifier = modifier,
-        textAlign = TextAlign.Center
-    )
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Hello $name!",
+            modifier = modifier,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = "Text in Center",
+            modifier = modifier,
+            color = Color.Green,
+            fontSize = 20.sp,
+            textAlign = TextAlign.Center
+        )
+    }
 }
 
 @Preview(showBackground = true)
