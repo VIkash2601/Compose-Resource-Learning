@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,32 +48,34 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Row(
+        modifier = Modifier.padding(all = 8.dp),
+        verticalAlignment = CenterVertically
     ) {
-        Text(
-            text = "Hello $name!",
-            modifier = modifier,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "Text in Center",
-            modifier = modifier,
-            color = Color.Green,
-            fontSize = 20.sp,
-            textAlign = TextAlign.Center
-        )
-        Spacer(modifier = Modifier.width(5.dp))
         Image(
             painter = painterResource(id = R.drawable.ic_launcher_background),
             contentDescription = "Launcher",
             Modifier
                 .size(48.dp)
-                .clip(CircleShape)
-                .padding(8.dp)
+                .clip(CircleShape),
         )
+        Spacer(modifier = Modifier.width(5.dp))
+        Column(
+            modifier = modifier
+        ) {
+            Text(
+                text = "Hello $name!",
+                modifier = modifier,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Justify
+            )
+            Text(
+                text = "This text is justified.",
+                modifier = modifier,
+                color = Color.Green,
+                textAlign = TextAlign.Justify
+            )
+        }
     }
 }
 
