@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +17,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,11 +52,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         verticalAlignment = CenterVertically
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
-            contentDescription = "Launcher",
+            painter = painterResource(id = R.drawable.ic_user),
+            contentDescription = "User Icon",
             Modifier
                 .size(48.dp)
-                .clip(CircleShape),
+                .clip(CircleShape)
+                .border(1.5.dp, MaterialTheme.colorScheme.inversePrimary, CircleShape)
+                .padding(2.dp),
         )
         Spacer(modifier = Modifier.width(5.dp))
         Column(
@@ -67,12 +68,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 text = "Hello $name!",
                 modifier = modifier,
                 fontSize = 20.sp,
+                color = Color.Green,
                 textAlign = TextAlign.Justify
             )
             Text(
                 text = "This text is justified.",
                 modifier = modifier,
-                color = Color.Green,
+                color = MaterialTheme.colorScheme.inversePrimary,
                 textAlign = TextAlign.Justify
             )
         }
