@@ -1,5 +1,6 @@
 package com.vikash.mycomposelearningapp
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -38,15 +39,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting(name = "Android")
                 }
             }
         }
     }
 }
 
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(modifier: Modifier = Modifier, name: String = "") {
     Row(
         modifier = Modifier.padding(all = 8.dp),
         verticalAlignment = CenterVertically
@@ -92,6 +99,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     MyComposeLearningAppTheme {
-        Greeting("Android")
+        Greeting(name = "Android")
     }
 }
