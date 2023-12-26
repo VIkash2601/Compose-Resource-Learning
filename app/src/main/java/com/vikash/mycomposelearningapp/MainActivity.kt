@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,15 +51,21 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = Modifier.padding(all = 8.dp),
         verticalAlignment = CenterVertically
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_user),
-            contentDescription = "User Icon",
-            Modifier
-                .size(48.dp)
-                .clip(CircleShape)
-                .border(1.5.dp, MaterialTheme.colorScheme.inversePrimary, CircleShape)
-                .padding(2.dp),
-        )
+        Surface(
+            shadowElevation = 5.dp,
+            shape = CircleShape
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_user),
+                contentDescription = "User Icon",
+                Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .border(1.5.dp, MaterialTheme.colorScheme.inversePrimary, CircleShape)
+                    .padding(2.dp, 0.dp, 2.dp, 4.dp),
+                alignment = Center
+            )
+        }
         Spacer(modifier = Modifier.width(5.dp))
         Column(
             modifier = modifier
