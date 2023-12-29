@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -123,14 +125,19 @@ fun GreetingPreview() {
 @Composable
 fun Conversation(messages: List<Message>) {
     LazyColumn {
-        items(messages) {message ->
+        items(messages) { message ->
             MessageCard(message)
         }
     }
 }
 
 @RequiresApi(Build.VERSION_CODES.Q)
-@Preview
+@Preview(name = "Light Mode")
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 @Composable
 fun PreviewConversation() {
     MyComposeLearningAppTheme {
@@ -152,13 +159,18 @@ fun MessageCard(msg: Message) {
             modifier = Modifier
                 .size(40.dp)
                 .clip(CircleShape)
-                .border(1.5.dp, MaterialTheme.colorScheme.primary, CircleShape)
+                .border(1.5.dp, MaterialTheme.colorScheme.secondary, CircleShape)
         )
         Spacer(modifier = Modifier.width(8.dp))
 
         // We keep track if the message is expanded or not in this
         // variable
         var isExpanded by remember { mutableStateOf(false) }
+        // surfaceColor will be updated gradually from one color to the other
+        val surfaceColor by animateColorAsState(
+            if (isExpanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
+            label = "Background Color",
+        )
 
         // We toggle the isExpanded variable when we click on this Column
         Column(
@@ -176,11 +188,16 @@ fun MessageCard(msg: Message) {
             Surface(
                 shape = MaterialTheme.shapes.medium,
                 shadowElevation = 1.dp,
+                // surfaceColor color will be changing gradually from primary to surface
+                color = surfaceColor,
+                // animateContentSize will change the Surface size gradually
+                modifier = Modifier
+                    .animateContentSize()
+                    .padding(1.dp)
             ) {
                 Text(
                     text = msg.body,
-                    modifier = Modifier
-                        .padding(all = 4.dp),
+                    modifier = Modifier.padding(all = 4.dp),
                     textAlign = TextAlign.Justify,
                     // If the message is expanded, we display all its content
                     // otherwise we only display the first line
