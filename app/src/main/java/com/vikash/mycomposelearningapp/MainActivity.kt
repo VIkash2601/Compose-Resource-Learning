@@ -9,12 +9,16 @@ import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,6 +26,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -63,7 +69,10 @@ class MainActivity : ComponentActivity() {
 fun Greeting(modifier: Modifier = Modifier, name: String = "") {
     Column {
         Row(
-            modifier = Modifier.padding(all = 8.dp)
+            modifier = Modifier
+                .height(IntrinsicSize.Min)
+                .padding(all = 8.dp)
+                .fillMaxWidth()
         ) {
             Surface(
                 shadowElevation = 5.dp,
@@ -97,6 +106,24 @@ fun Greeting(modifier: Modifier = Modifier, name: String = "") {
                     color = MaterialTheme.colorScheme.inversePrimary,
                     textAlign = TextAlign.Justify,
                     style = MaterialTheme.typography.bodySmall
+                )
+            }
+            Spacer(
+                Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .background(Color.Transparent)
+            )
+            Button(
+                modifier = Modifier.width(120.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                ),
+                onClick = {}) {
+                Text(
+                    text = "Button",
+                    textAlign = TextAlign.Center,
+                    color = Color.Magenta
                 )
             }
         }
