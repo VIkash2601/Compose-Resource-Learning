@@ -13,9 +13,13 @@
         android:theme="@style/Theme.MyComposeLearningApp"
         tools:targetApi="31">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.MyComposeLearningApp" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MyComposeLearningApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,6 @@
 package com.vikash.mycomposelearningapp
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -40,6 +41,7 @@ import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,7 +60,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting(name = "Android")
+                    Greeting(name = "User")
                 }
             }
         }
@@ -67,6 +69,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier, name: String = "") {
+
+    // Local Composable Context
+    val context = LocalContext.current
+
     Column {
         Row(
             modifier = Modifier
@@ -101,7 +107,7 @@ fun Greeting(modifier: Modifier = Modifier, name: String = "") {
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "This text is justified.",
+                    text = "Test",
                     modifier = modifier,
                     color = MaterialTheme.colorScheme.inversePrimary,
                     textAlign = TextAlign.Justify,
@@ -115,15 +121,36 @@ fun Greeting(modifier: Modifier = Modifier, name: String = "") {
                     .background(Color.Transparent)
             )
             Button(
-                modifier = Modifier.width(120.dp),
+                modifier = Modifier.width(100.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.background
+                    containerColor = MaterialTheme.colorScheme.primary
                 ),
                 onClick = {}) {
                 Text(
                     text = "Button",
                     textAlign = TextAlign.Center,
-                    color = Color.Magenta
+                    color = Color.White
+                )
+            }
+            Spacer(
+                Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .background(Color.Transparent)
+            )
+            Button(
+                modifier = Modifier.width(100.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                ),
+                onClick = {
+                    // navigate to Login Activity
+                    context.startActivity(Intent(context, LoginActivity::class.java))
+                }) {
+                Text(
+                    text = "Login",
+                    textAlign = TextAlign.Center,
+                    color = Color.White
                 )
             }
         }
