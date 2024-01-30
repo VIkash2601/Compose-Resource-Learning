@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -46,7 +45,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.vikash.mycomposelearningapp.data.Message
+import com.vikash.mycomposelearningapp.screens.SetupNavGraph
 import com.vikash.mycomposelearningapp.ui.theme.MyComposeLearningAppTheme
 import com.vikash.mycomposelearningapp.utility.SampleData
 
@@ -55,13 +56,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyComposeLearningAppTheme {
-                // A surface container using the 'background' color from the theme
+                val navController = rememberNavController()
+                SetupNavGraph(navController = navController)
+                /*// A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Greeting(name = "User")
-                }
+                }*/
             }
         }
     }

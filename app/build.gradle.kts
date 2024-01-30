@@ -82,4 +82,9 @@ dependencies {
 
     // For Compose Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
+
+    // Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation("com.airbnb.android:lottie-compose:5.2.0")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
 }
