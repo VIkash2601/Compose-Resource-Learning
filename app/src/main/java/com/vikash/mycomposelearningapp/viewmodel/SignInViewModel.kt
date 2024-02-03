@@ -5,6 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
+import com.vikash.mycomposelearningapp.navexample.screen.NavigationItem
 
 class SignInViewModel : ViewModel() {
 
@@ -25,7 +27,9 @@ class SignInViewModel : ViewModel() {
         password = input
     }
 
-    fun signIn() {
+    fun signIn(navigation: NavController? = null) {
         Log.e(TAG, "signIn: $email & $password")
+        // navigation?.navigate("${NavigationItem.Home.route}/${email}/${password}")
+        navigation?.navigate(NavigationItem.Home.sendCredentials(email, password))
     }
 }
