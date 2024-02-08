@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.vikash.mycomposelearningapp.Greeting
+import com.vikash.mycomposelearningapp.CardMinimalExample
 import com.vikash.mycomposelearningapp.SplashScreen
 
 @Composable
@@ -25,7 +25,7 @@ fun SetupNavGraph(navController: NavHostController) {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background
             ) {
-                Greeting(name = "User")
+                CardMinimalExample()
             }
         }
     }
