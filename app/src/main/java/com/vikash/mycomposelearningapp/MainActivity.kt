@@ -281,6 +281,7 @@ fun MessageCard(msg: Message) {
 )
 @Composable
 fun CardMinimalExample() {
+    var isOutlined by remember { mutableStateOf(false) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -288,7 +289,12 @@ fun CardMinimalExample() {
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        Card(
+        Card(modifier = Modifier
+            .padding(16.dp)
+            .clickable {
+                isOutlined = !isOutlined
+            },
+            border = if (isOutlined) BorderStroke(2.dp, Color.Cyan) else null,
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 6.dp
             )
