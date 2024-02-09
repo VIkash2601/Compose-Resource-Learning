@@ -69,6 +69,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // For Material Icons
     // implementation("androidx.compose.material:material-icons-extended")
@@ -83,10 +86,14 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // For Compose Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.airbnb.android:lottie-compose:5.2.0")
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+
+    // Kotlin DSL (Legacy Support)
+    // implementation("org.jetbrains.anko:anko-commons:0.10.8")
+    // implementation("org.jetbrains.anko:anko-design:0.10.8") // For additional UI components like Snackbar, FloatingActionButton, etc. (optional)
+    // implementation("org.jetbrains.anko:anko-sdk25:0.10.8") // Adjust the version and SDK level as per your project's requirements
 }

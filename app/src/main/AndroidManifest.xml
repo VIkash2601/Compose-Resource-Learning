@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyComposeLearningApp"
         tools:targetApi="31">
         <activity
+            android:name=".kotlindsl.KotlinDSLActivity"
+            android:exported="false" />
+        <activity
             android:name=".navexample.NavigationActivity"
             android:exported="true"
             android:label="@string/title_activity_navigation"
@@ -25,13 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyComposeLearningApp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.MyComposeLearningApp"/>
     </application>
 
 </manifest>
