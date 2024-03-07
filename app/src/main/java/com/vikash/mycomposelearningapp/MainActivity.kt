@@ -14,6 +14,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -29,6 +31,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -47,6 +50,7 @@ import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -281,6 +285,28 @@ fun MessageCard(msg: Message) {
 )
 @Composable
 fun CardMinimalExample() {
+
+    Row(
+        horizontalArrangement = Arrangement.End,
+        verticalAlignment = Alignment.Top
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_clouds_96dp),
+            contentDescription = "Launch Web App",
+            modifier = Modifier
+                // .padding(5.dp, 5.dp) // For Margin
+                .size(56.dp)
+                .clip(CircleShape)
+                .clickable(
+                    onClick = {},
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = rememberRipple()
+                )
+                .padding(10.dp, 10.dp), // For Padding
+            colorFilter = if (isSystemInDarkTheme()) ColorFilter.tint(Color.White) else ColorFilter.tint(Color.Black)
+        )
+    }
+
     var isOutlined by remember { mutableStateOf(false) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -289,11 +315,12 @@ fun CardMinimalExample() {
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        Card(modifier = Modifier
-            .padding(16.dp)
-            .clickable {
-                isOutlined = !isOutlined
-            },
+        Card(
+            modifier = Modifier
+                .padding(16.dp)
+                .clickable {
+                    isOutlined = !isOutlined
+                },
             border = if (isOutlined) BorderStroke(2.dp, Color.Cyan) else null,
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 6.dp
