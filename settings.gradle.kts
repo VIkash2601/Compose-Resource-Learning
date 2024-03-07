@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "My Compose Learning App"
 include(":app")
- 
+include(":weatherapp")
