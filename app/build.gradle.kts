@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.gaelmarhic.quadrant")
 }
 
 android {
@@ -96,4 +97,6 @@ dependencies {
     // implementation("org.jetbrains.anko:anko-commons:0.10.8")
     // implementation("org.jetbrains.anko:anko-design:0.10.8") // For additional UI components like Snackbar, FloatingActionButton, etc. (optional)
     // implementation("org.jetbrains.anko:anko-sdk25:0.10.8") // Adjust the version and SDK level as per your project's requirements
+
+    implementation(project(":weatherapp"))
 }

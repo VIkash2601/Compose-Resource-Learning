@@ -57,6 +57,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.gaelmarhic.quadrant.QuadrantConstants.HOME_ACTIVITY
 import com.vikash.mycomposelearningapp.data.Message
 import com.vikash.mycomposelearningapp.screens.SetupNavGraph
 import com.vikash.mycomposelearningapp.ui.theme.MyComposeLearningAppTheme
@@ -286,6 +287,9 @@ fun MessageCard(msg: Message) {
 @Composable
 fun CardMinimalExample() {
 
+    // Local Composable Context
+    val context = LocalContext.current
+
     Row(
         horizontalArrangement = Arrangement.End,
         verticalAlignment = Alignment.Top
@@ -298,12 +302,22 @@ fun CardMinimalExample() {
                 .size(56.dp)
                 .clip(CircleShape)
                 .clickable(
-                    onClick = {},
+                    onClick = {
+                        context.startActivity(
+                            Intent().setClassName(
+                                context,
+                                HOME_ACTIVITY
+                                // "com.viksa.weatherapp.HomeActivity"
+                            )
+                        )
+                    },
                     interactionSource = remember { MutableInteractionSource() },
                     indication = rememberRipple()
                 )
                 .padding(10.dp, 10.dp), // For Padding
-            colorFilter = if (isSystemInDarkTheme()) ColorFilter.tint(Color.White) else ColorFilter.tint(Color.Black)
+            colorFilter = if (isSystemInDarkTheme()) ColorFilter.tint(Color.White) else ColorFilter.tint(
+                Color.Black
+            )
         )
     }
 
